@@ -1,13 +1,20 @@
 import { Link } from 'react-router';
+/* eslint-disable */
+import { motion } from 'motion/react';
 
 function Home() {
   return (
-    <div className='home container'>
+    <motion.div
+      className='home container'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.5, duration: 1.5 }}
+    >
       <h2>Welcome to Pizza Joint</h2>
       <Link to='/base'>
-        <button>Create Your Pizza</button>
+        <motion.button animate={{}}>Create Your Pizza</motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 

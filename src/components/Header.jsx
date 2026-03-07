@@ -1,3 +1,6 @@
+/* eslint-disable */
+import { motion } from 'motion/react';
+
 function Header() {
   return (
     <header>
@@ -14,9 +17,14 @@ function Header() {
           <path fill='none' d='M50 30 L50 -10 C50 -10 90 -10 90 30 Z' />
         </svg>
       </div>
-      <div className='title'>
+      <motion.div
+        className='title'
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+      >
         <h1>Pizza Joint</h1>
-      </div>
+      </motion.div>
     </header>
   );
 }
