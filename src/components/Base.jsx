@@ -6,12 +6,32 @@ function Base() {
   const { pizza, addBase } = useOutletContext();
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
+  const containerVariant = {
+    hidden: {
+      opacity: 0,
+      x: '100vw',
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring',
+        delay: 0.3,
+      },
+    },
+  };
+
+  const buttonVariant = {
+    hidden: { x: '-100vw' },
+    visible: { x: 0, transition: { type: 'spring', stiffness: 120 } },
+  };
+
   return (
     <motion.div
       className='base container'
-      initial={{ x: '100vw' }}
-      animate={{ x: 0 }}
-      transition={{ type: 'spring', delay: 0.3 }}
+      variants={containerVariant}
+      initial='hidden'
+      animate='visible'
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
@@ -32,12 +52,7 @@ function Base() {
       </ul>
 
       {pizza.base && (
-        <motion.div
-          className='next'
-          initial={{ x: '-100vw' }}
-          animate={{ x: 0 }}
-          transition={{ type: 'spring', stiffness: 120 }}
-        >
+        <motion.div className='next' variants={buttonVariant}>
           <Link to='/toppings'>
             <motion.button
               whileHover={{
