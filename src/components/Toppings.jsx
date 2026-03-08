@@ -14,8 +14,28 @@ function Toppings() {
     'tomatoes',
   ];
 
+  const containerVariant = {
+    hidden: {
+      opacity: 0,
+      x: '100vw',
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring',
+        delay: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className='toppings container'>
+    <motion.div
+      className='toppings container'
+      variants={containerVariant}
+      initial='hidden'
+      animate='visible'
+    >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map(topping => {
@@ -45,7 +65,7 @@ function Toppings() {
           Order
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
