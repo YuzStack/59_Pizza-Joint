@@ -1,9 +1,13 @@
 import { useOutletContext } from 'react-router';
 /* eslint-disable */
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 
 const Order = () => {
   const { pizza } = useOutletContext();
+
+  const [showTitle, setShowTitle] = useState(true);
+  setTimeout(() => setShowTitle(false), 3000);
 
   const containerVariant = {
     hidden: {
@@ -39,7 +43,12 @@ const Order = () => {
       initial='hidden'
       animate='visible'
     >
-      <h2>Thank you for your order :)</h2>
+      <AnimatePresence>
+        {showTitle && (
+          <motion.h2 exit={{ y: -1000 }}>Thank you for your order :)</motion.h2>
+        )}
+      </AnimatePresence>
+
       <motion.p variants={childVariant}>
         You ordered a {pizza.base} pizza with:
       </motion.p>
