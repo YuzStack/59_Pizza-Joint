@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 /* eslint-disable */
 import { motion } from 'motion/react';
+import Loader from './Loader';
 
 const buttonVariant = {
   hover: {
@@ -29,6 +30,7 @@ function Home() {
           Create Your Pizza
         </motion.button>
       </Link>
+      <Loader />
     </motion.div>
   );
 }
