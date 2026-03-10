@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router';
 import Header from './Header';
 import { useState } from 'react';
+import Modal from './Modal';
 
 function App() {
   const [pizza, setPizza] = useState({ base: '', toppings: [] });
+  const [showModal, setShowModal] = useState(false);
 
   const addBase = function (base) {
     setPizza(curPizza => ({ ...curPizza, base }));
@@ -26,7 +28,8 @@ function App() {
   return (
     <div>
       <Header />
-      <Outlet context={{ pizza, addBase, addTopping }} />
+      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Outlet context={{ pizza, addBase, addTopping, setShowModal }} />
     </div>
   );
 }
