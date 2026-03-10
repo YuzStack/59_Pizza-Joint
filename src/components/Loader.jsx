@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { motion } from 'motion/react';
+import { motion, useCycle } from 'motion/react';
 
 const loaderVariants = {
   animationOne: {
@@ -15,16 +15,24 @@ const loaderVariants = {
       },
     },
   },
+  animationTwo: {
+    y: [0, -40],
+    x: 0,
+    transition: { y: { repeat: Infinity, duration: 0.25, ease: 'easeOut' } },
+  },
 };
 
 function Loader() {
+  const [animation, cycleAnimation] = useCycle('animationOne', 'animationTwo');
+
   return (
     <>
       <motion.div
         className='loader'
         variants={loaderVariants}
-        animate='animationOne'
+        animate={animation}
       />
+      <div onClick={cycleAnimation}>Cycle Loader</div>
     </>
   );
 }
