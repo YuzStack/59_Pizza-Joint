@@ -18,7 +18,14 @@ const loaderVariants = {
   animationTwo: {
     y: [0, -40],
     x: 0,
-    transition: { y: { repeat: Infinity, duration: 0.25, ease: 'easeOut' } },
+    transition: {
+      y: {
+        repeat: Infinity,
+        repeatType: 'reverse',
+        duration: 0.25,
+        ease: 'easeOut',
+      },
+    },
   },
 };
 
@@ -32,7 +39,9 @@ function Loader() {
         variants={loaderVariants}
         animate={animation}
       />
-      <div onClick={cycleAnimation}>Cycle Loader</div>
+      <div onClick={cycleAnimation} style={{ cursor: 'pointer' }}>
+        Cycle Loader
+      </div>
     </>
   );
 }
