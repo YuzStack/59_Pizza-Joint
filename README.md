@@ -35,6 +35,14 @@ The core philosophy behind this project is that web applications should feel res
 
 While the application is fully functional, I have intentionally reserved **Route Transitions** for a future update. This will be implemented once I integrate **React Global Context**, allowing for seamless state persistence and shared animation keys across the `react-router` `<Outlet />` tree.
 
+## 🚀 Getting Started
+
+To run this project locally:
+
+1. Clone the repository: `git clone https://github.com/YuzStack/57_Memory-Game.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+
 ## 📜 Acknowledgments
 
 - Inspired by the **Framer Motion for Beginners** series by **The Net Ninja.**
